@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+void Print(char* s) {
+    char* begin = s; 
+    int counter = 0;  
+
+    while (true) {   
+        if (*s >= '0' && *s <= '9') {
+            counter++;
+            s++;
+            continue;
+        }
+                
+        if (*s == ' ' || *s == '\0') {  
+           
+            if (counter == 1) {            
+                while (begin < s) {  
+                    cout << *begin;
+                    begin++;
+                }
+                cout << endl;
+            }           
+            if (*s == '\0')    
+                break;
+            Print(++s);  
+            break;
+        }
+        
+        s++;     
+    }
+}
+
+void main()
+{
+    char s[256];
+    cout << "Enter sentence: ";
+    cin.getline(s, 255);
+    s[255] = '\0';
+    Print(s);
+    system("pause");
+}
